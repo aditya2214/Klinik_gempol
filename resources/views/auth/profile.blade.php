@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="profile-header-container">
                 <div class="profile-header-img">
-                    <img width="250px" class="rounded-circle img-fluid" src="{{url('/storage/avatars/'. Auth::user()->avatar)}}" 
+                    <img width="250px" class="rounded-circle img-fluid" src="{{url('http://localhost:8081/Linx-Klinik-master/storage/app/public/avatars/'. Auth::user()->avatar)}}" 
                     <!-- badge -->
                     <div class="rank-label-container text-center">
                         <h4><span class="badge badge-dark">{{($user->profesi=="Dokter" ? 'dr. ':'')}}{{ ucwords($user->name)}}</span></h4>

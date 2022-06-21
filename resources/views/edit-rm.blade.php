@@ -42,14 +42,19 @@
                     @foreach ($idens as $iden)
                     <form class="user" action="">
                         <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input type="text" readonly name='nik_karyawan' value="{{$iden->nik_karyawan}}"  class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="Nama_Lengkap">Nama Lengkap</label>
                                 <input type="text" class="form-control " name="Nama_Lengkap" value="{{$iden->nama}}" readonly>
                             </div>
-                          <div class="col-sm-6">
-                            <label for="Tanggal_Lahir">Tanggal lahir :</label>
-                            <input type="date" class="form-control " name="Tanggal_Lahir"  value="{{$iden->tgl_lhr}}" readonly>
-                          </div>
+                            <div class="col-sm-6">
+                                <label for="Tanggal_Lahir">Tanggal lahir :</label>
+                                <input type="date" class="form-control " name="Tanggal_Lahir"  value="{{$iden->tgl_lhr}}" readonly>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
@@ -59,18 +64,29 @@
                             <div class="col-sm-6">
                                 <label for="jk">Jenis Kelamin</label>
                                 <input type="text" class="form-control " name="jk" value="{{$iden->jk}}" readonly> 
-                              </div>
                             </div>
+                        </div>
                         
                         <div class="form-group row">
-                          <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label for="no_bpjs">No. BPJS</label>
-                                <input type="text" class="form-control " name="no_bpjs" value="{{$iden->no_bpjs}}" readonly>
+                          <div class="col-sm-6">
+                            <label for="no_bpjs">No. BPJS</label>
+                            <input type="text" class="form-control " name="no_bpjs" value="{{$iden->no_bpjs}}" readonly>
                           </div>
                           <div class="col-sm-6">
                             <label for="no_handphone">No. Handphone</label>
                             <input type="text" class="form-control " name="no_handphone"  value="{{$iden->hp}}" readonly>
                           </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="departemen">Departement</label>
+                                <input type="text" class="form-control " name="departemen"  value="{{$iden->departemen}}" readonly>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control " name="email"  value="{{$iden->email}}" readonly>
+                            </div>
                         </div>
                     </form>
                     @endforeach
@@ -209,11 +225,11 @@
                                  <i class="fas fa-save fa-fw"></i> Simpan
                             </button>
                         </div>
-                        <div class="col-sm-4 mb-3 mb-sm-0">
+                        <!-- <div class="col-sm-4 mb-3 mb-sm-0">
                             <button type="submit" class="btn btn-success btn-block" name="simpan" value="simpan_tagihan" >
                                  <i class="fas fa-cart-plus fa-fw"></i> Simpan & Buat Tagihan
                             </button>
-                        </div> 
+                        </div>  -->
                     </form>
                     @endforeach
                 </div>

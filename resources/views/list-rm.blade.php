@@ -152,23 +152,23 @@
                       </td>
                       <td width="120px">
                         <a href="{{route('rm.edit', $rm->id)}}" class="btn btn-warning btn-sm btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">Edit</span>
+                          <span class="icon">
+                          <i style="padding-top:4px"class="fas fa-pen"></i>
+                          </span>
+                          <span class="text">Edit</span>
                         </a>
                         <a href="{{route('rm.lihat', $rm->id)}}" class="btn btn-success btn-sm btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-eye"></i>
-                        </span>
-                        <span class="text">Lihat</span>
+                          <span class="icon">
+                          <i style="padding-top:4px"class="fas fa-eye"></i>
+                          </span>
+                          <span class="text">Lihat</span>
                         </a>
-                        <a href="{{route('tagihan', $rm->id)}}" class="btn btn-secondary btn-sm btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-cart-plus"></i>
-                        </span>
-                        <span class="text">Tagihan</span>
-                        </a>
+                        <!-- <a href="{{route('tagihan', $rm->id)}}" class="btn btn-secondary btn-sm btn-icon-split">
+                          <span class="icon">
+                            <i style="padding-top:4px"class="fas fa-cart-plus"></i>
+                          </span>
+                          <span class="text">Tagihan</span>
+                        </a> -->
                         <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$rm->id}})" data-target="#DeleteModal" class="btn btn-sm btn-icon-split btn-danger">
                         <span class="icon"><i class="fa  fa-trash" style="padding-top: 4px;"></i></span><span class="text">Hapus</span></a>
                       </td>

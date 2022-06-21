@@ -25,7 +25,7 @@ class LabController extends Controller
        public function simpan_lab(Request $request)
     { 
         $this->validate($request, [
-            'nama_lab' => 'required|min:4|max:25',
+            'nama_lab' => 'required|min:4|max:50',
             'harga' => 'required|numeric|digits_between:1,7',
             'satuan' => 'required|max:10',
         ]);
@@ -54,7 +54,7 @@ class LabController extends Controller
         public function update_lab(Request $request)
     {
             $this->validate($request, [
-                'nama_lab' => 'required|min:4|max:25',
+                'nama_lab' => 'required|min:4|max:50',
                 'harga' => 'required|numeric|digits_between:1,7',
                 'satuan' => 'required|max:10',
             ]);

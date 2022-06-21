@@ -47,21 +47,27 @@
                   <thead>
                     <tr>
                       <th>No RM</th>
+                      <th>Nik Karyawan</th>
                       <th>Nama Lengkap</th>
                       <th>Usia</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
+                      <th>Departemen</th>
+                      <th>Email</th>
                       <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
                   </thead>
                   <tfoot>
-                    <tr>
+                  <tr>
                       <th>No RM</th>
+                      <th>Nik Karyawan</th>
                       <th>Nama Lengkap</th>
                       <th>Usia</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
+                      <th>Departemen</th>
+                      <th>Email</th>
                       <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
@@ -70,10 +76,13 @@
                   @foreach ($pasiens as $pasien)
                     <tr>
                       <td width="10%">{{str_pad($pasien->id, 4, '0', STR_PAD_LEFT)  }}</td>
+                      <td>{{$pasien->nik_karyawan}}</td>
                       <td>{{ $pasien->nama }}</td>
                       <td>{{ hitung_usia($pasien->tgl_lhr) }}</td>
                       <td>{{ $pasien->jk }}</td>
                       <td class="text-truncate" style="max-width: 150px;">{{ $pasien->alamat }}</td>
+                      <td>{{$pasien->departemen}}</td>
+                      <td>{{ $pasien->email }}</td>
                       <td>{{ $pasien->hp }}</td>
                       <td>
                         <a href ="{{route('rm.list', $pasien->id) }}" title="Buka RM" class="btn btn-circle btn-primary">

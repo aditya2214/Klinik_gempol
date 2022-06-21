@@ -50,23 +50,38 @@
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                                <input type="text" class="form-control " name="nik_karyawan" placeholder="Nik Karyawan" value="{{ $data->nik_karyawan}}" >
+                            </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap" value="{{ $data->nama}}" >
                             </div>
                           <div class="col-sm-2">
                             <label for="Tanggal_Lahir" align="center" class ="form-text">Tanggal lahir :</label>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-2">
                             <input type="date" class="form-control " name="Tanggal_Lahir" placeholder="Tanggal lahir" value="{{ $data->tgl_lhr}}">
                           </div>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control " name="Alamat" placeholder="Alamat" value="{{ $data->alamat}}">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control " name="Alamat" placeholder="Alamat" value="{{ $data->alamat}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control " name="email" placeholder="Email" value="{{ $data->email}}">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan" value="{{ $data->pekerjaan}}">
-                          </div>
+                            <select name="departemen" id="departemen" class="form-control">
+                                <option value="Produksi" @php if ('Produksi' == $data->departemen) echo "selected"; @endphp> Produksi</option>
+                                <option value="Quality Control" @php if ('Quality Control' == $data->departemen) echo "selected"; @endphp> Quality Control</option>
+                                <option value="Staff / Administrasi" @php if ('Staff / Administrasi' == $data->departemen) echo "selected"; @endphp> Staff / Administrasi</option>
+                                <option value="Enginnering" @php if ('Enginnering' == $data->departemen) echo "selected"; @endphp> Enginnering</option>
+                                <option value="Warehouse" @php if ('Warehouse' == $data->departemen) echo "selected"; @endphp> Warehouse</option>
+                            </select>                          </div>
                           <div class="col-sm-6">
                             <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone" value="{{ $data->hp}}">
                           </div>

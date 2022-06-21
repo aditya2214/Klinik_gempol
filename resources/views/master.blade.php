@@ -39,7 +39,7 @@
         @if (get_setting('gambarbool') === 1)
             <img src ="{{url('/storage/logo/'. get_setting('gambar'))}}" width=50px>
         @else
-            <i class="fas {{get_setting('logo')}}"></i>
+        <i class="fa-solid fa-display-medical"></i>
         @endif
           
         </div>
@@ -264,7 +264,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ucfirst(Auth::user()->name) }}</span>
-                <img width="60px" class="img-profile rounded-circle" src="{{url('/storage/avatars/'. Auth::user()->avatar)}}">
+                <img width="60px" class="img-profile rounded-circle" src="{{url('http://localhost:8081/Linx-Klinik-master/storage/app/public/avatars/'. Auth::user()->avatar)}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

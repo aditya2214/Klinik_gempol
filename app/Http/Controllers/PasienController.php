@@ -40,20 +40,25 @@ class PasienController extends Controller
     public function simpan_pasien(Request $request)
     { 
         $this->validate($request, [
+            'nik_karyawan' => 'required',
             'Nama_Lengkap' => 'required|min:5|max:35',
             'Tanggal_Lahir' => 'required|before:today',
             'Alamat' => 'required',
-            'Pekerjaan' => 'required',
+            'departemen' => 'required',
             'no_handphone' => 'required|numeric',
+            'email' => 'required',
             'Jenis_Kelamin' => 'required',
             'no_bpjs' => 'nullable|numeric|digits_between:1,15'
         ]);
         DB::table('pasien')->insert([
+            'nik_karyawan' => $request->nik_karyawan,
             'nama' => $request->Nama_Lengkap,
             'tgl_lhr' => $request->Tanggal_Lahir,
             'alamat' => $request->Alamat,
-            'pekerjaan' => $request->Pekerjaan,
+            'pekerjaan' => 'XXX',
+            'departemen' => $request->departemen,
             'hp' => $request->no_handphone,
+            'email' => $request->email,
             'jk' => $request->Jenis_Kelamin,
             'pendidikan' => $request->Pendidikan_terakhir,
             'no_bpjs' => $request->no_bpjs,
@@ -83,23 +88,28 @@ class PasienController extends Controller
         public function update_pasien(Request $request)
     {
             $this->validate($request, [
+                'nik_karyawan' => 'required',
                 'Nama_Lengkap' => 'required|min:5|max:35',
                 'Tanggal_Lahir' => 'required|before:today',
                 'Alamat' => 'required',
-                'Pekerjaan' => 'required',
+                'departemen' => 'required',
                 'no_handphone' => 'required|numeric',
+                'email' => 'required',
                 'Jenis_Kelamin' => 'required',
                 'no_bpjs' => 'nullable|numeric|digits_between:1,15'
             ]);
             
             DB::table('pasien')->where('id',$request->id)->update([
+                'nik_karyawan' => $request->nik_karyawan,
                 'nama' => $request->Nama_Lengkap,
                 'tgl_lhr' => $request->Tanggal_Lahir,
                 'alamat' => $request->Alamat,
-                'pekerjaan' => $request->Pekerjaan,
-                'pendidikan' => $request->Pendidikan_terakhir,
+                'pekerjaan' => 'XXX',
+                'departemen' => $request->departemen,
                 'hp' => $request->no_handphone,
+                'email' => $request->email,
                 'jk' => $request->Jenis_Kelamin,
+                'pendidikan' => $request->Pendidikan_terakhir,
                 'no_bpjs' => $request->no_bpjs,
                 'alergi' => $request ->alergi,
                 'updated_time' => Carbon::now(),

@@ -110,12 +110,12 @@
                         </span>
                         <span class="text">Lihat</span>
                         </a>
-                        <a href="{{route('tagihan', $rm->id)}}" class="btn btn-secondary btn-sm btn-icon-split">
+                        <!-- <a href="{{route('tagihan', $rm->id)}}" class="btn btn-secondary btn-sm btn-icon-split">
                         <span class="icon">
                         <i style="padding-top:4px"class="fas fa-cart-plus"></i>
                         </span>
                         <span class="text">Tagihan</span>
-                        </a>
+                        </a> -->
                         <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$rm->id}})" data-target="#DeleteModal" class="btn btn-sm btn-icon-split btn-danger">
                         <span class="icon"><i class="fa  fa-trash" style="padding-top: 4px;"></i></span><span class="text">Hapus</span></a>
                       </td>

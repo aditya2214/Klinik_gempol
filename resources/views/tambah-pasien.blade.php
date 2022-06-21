@@ -17,22 +17,39 @@
                     <form class="user" action="{{route('pasien.simpan')}}" method="post">
                     {{csrf_field()}}
                         <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <input type="text" class="form-control " name="nik_karyawan" placeholder="Nik Karyawan" >
+                            </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap" >
                             </div>
                           <div class="col-sm-2">
                             <label align="center" class ="form-text">Tanggal lahir :</label>
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-2">
                             <input type="date" class="form-control " name="Tanggal_Lahir" placeholder="Tanggal lahir">
                           </div>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control " name="Alamat" placeholder="Alamat">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <input type="text" class="form-control " name="Alamat" placeholder="Alamat">
+                            </div>
+                            <div class="col-sm-6">
+                              <input type="email" class="form-control " name="email" placeholder="email">
+                            </div>
+                          </div>
                         </div>
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan">
+                            <select name="departemen" id="departemen" class="form-control">
+                                <option value="" selected disabled>Departemen</option>
+                                <option value="Produksi">Produksi</option>
+                                <option value="Quality Control">Quality Control</option>
+                                <option value="Staff / Administrasi">Staff / Administrasi</option>
+                                <option value="Enginnering">Enginnering</option>
+                                <option value="Warehouse">Warehouse</option>
+                            </select>
                           </div>
                           <div class="col-sm-6">
                             <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone">
