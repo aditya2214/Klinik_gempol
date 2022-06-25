@@ -32,11 +32,19 @@
                         </div>
                         <div class="form-group">
                           <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                               <input type="text" class="form-control " name="Alamat" placeholder="Alamat">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                               <input type="email" class="form-control " name="email" placeholder="email">
+                            </div>
+                            <div class="col-sm-4">
+                                <select name="role" id="role" class="form-control">
+                                  <option value="" selected disabled>-- Role --</option>
+                                  @foreach($role as $row)
+                                  <option value="{{$row->id}}">{{$row->role_name}}</option>
+                                  @endforeach
+                                </select>
                             </div>
                           </div>
                         </div>
@@ -74,13 +82,7 @@
 
                             </select>
                           </div>
-                        </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control " name="no_bpjs" placeholder="Nomer BPJS (Tidak Wajib)">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control " name="alergi" placeholder="Daftar Alergi (Tidak Wajib)"></textarea>
-                            </div>                                
+                        </div>                          
                         <div class="form-group row">
 
                             <div class="col-sm-3">
@@ -93,7 +95,7 @@
                                     <i class="fas fa-save fa-fw"></i> Simpan
                                 </button>
                             </div>
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                                 <button type="submit" class="btn btn-warning btn-block" name ="simpan" value="simpan_baru">
                                     <i class="fas fa-plus fa-fw"></i> Simpan Dan Buat Baru
                                 </button>
@@ -102,7 +104,7 @@
                                 <button type="submit" class="btn btn-success btn-block" name ="simpan" value="simpan_rm">
                                     <i class="fas fa-file fa-fw"></i> Simpan Dan Buka RM
                                 </button>
-                            </div>       
+                            </div>        -->
                         </div>
                     </form>
                 </div>

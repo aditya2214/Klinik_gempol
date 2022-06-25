@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -47,7 +48,7 @@ class LoginController extends Controller
     $this->validate($request, [
         'email' => 'required|string', //VALIDASI KOLOM USERNAME
         //TAPI KOLOM INI BISA BERISI EMAIL ATAU USERNAME
-        'password' => 'required|string|min:8',
+        'password' => 'required|string|min:2',
     ]);
 
     //LAKUKAN PENGECEKAN, JIKA INPUTAN DARI USERNAME FORMATNYA ADALAH EMAIL, MAKA KITA AKAN MELAKUKAN PROSES AUTHENTICATION MENGGUNAKAN EMAIL, SELAIN ITU, AKAN MENGGUNAKAN USERNAME
@@ -63,7 +64,15 @@ class LoginController extends Controller
     //LAKUKAN LOGIN
     if (auth()->attempt($login)) {
         //JIKA BERHASIL, MAKA REDIRECT KE HALAMAN HOME
-        return redirect()->route('dashboard');
+        if(Auth::user()->admin == 1){
+            return redirect()->route('dashboard');
+        } else if(Auth::user()->admin == 2){
+
+        }  else if(Auth::user()->admin == 3){
+            return redirect()->route('formulir');
+        } else {
+            return view('errors.404');
+        }
     }
     $errors = new MessageBag(['email'=>['Email/Username atau Password salah!']]);
     //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI 

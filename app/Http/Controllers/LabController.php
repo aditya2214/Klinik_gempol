@@ -39,7 +39,7 @@ class LabController extends Controller
            $ids= DB::table('lab')->orderby('id','desc')->first();         
             switch($request->simpan) {
                 case 'simpan': 
-                    $buka=route('lab.edit', $ids->id);
+                    $buka=route('lab');
                     $pesan='Data lab berhasil disimpan!';
                 break;             
                 case 'simpan_baru': 

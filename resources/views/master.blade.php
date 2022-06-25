@@ -39,7 +39,7 @@
         @if (get_setting('gambarbool') === 1)
             <img src ="{{url('/storage/logo/'. get_setting('gambar'))}}" width=50px>
         @else
-        <i class="fa-solid fa-display-medical"></i>
+        <i class="fa fa-heartbeat" aria-hidden="true"></i>
         @endif
           
         </div>
@@ -50,11 +50,13 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
+      @if(Auth::user()->admin == 1)
       <li class="nav-item {{set_menu('dashboard')}}">
         <a class="nav-link" href="{{route('dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -62,21 +64,55 @@
       <div class="sidebar-heading">
         Menu Utama
       </div>
-      <!-- Nav Item - Pasien Collapse Menu -->
-      <li class="nav-item {{ set_menu(['pasien', 'pasien.tambah', 'pasien.edit']) }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+      
+      <!-- Nav Item - List booking Collapse Menu -->
+      @if(Auth::user()->admin == 3 || Auth::user()->admin == 2)
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <i class="fas fa-fw fa-portrait"></i>
-          <span>Pasien</span>
+          <span>Pendaftaran</span>
         </a>
-        <div id="collapseTwo" class="collapse {{ set_show(['pasien', 'pasien.tambah', 'pasien.edit']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseOne" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">            
-            <a class="collapse-item {{ set_menu('pasien') }}" href="{{ route('pasien') }}">Daftar Pasien</a>
-            <a class="collapse-item {{ set_menu('pasien.tambah') }}" href="{{ route('pasien.tambah') }}">Tambah Pasien</a>
+            <a class="collapse-item " href="{{ route('formulir') }}">Formulir Pendaftaran</a>
           </div>
         </div>
       </li>
+      @endif
+
+      <!-- Nav Item - Pasien Collapse Menu -->
+      @if(Auth::user()->admin == 1)
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBooking" aria-expanded="true" aria-controls="collapseBooking">
+          <i class="fas fa-fw fa-portrait"></i>
+          <span>Pendaftaran Online</span>
+        </a>
+        <div id="collapseBooking" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">            
+            <a class="collapse-item" href="{{ route('pendaftaran') }}">List </a>
+          </div>
+        </div>
+      </li>
+      @endif
+
+      <!-- Nav Item - Pasien Collapse Menu -->
+      @if(Auth::user()->admin == 1)
+      <li class="nav-item {{ set_menu(['pasien', 'pasien.tambah', 'pasien.edit']) }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-portrait"></i>
+          <span>Pasien / Karyawan</span>
+        </a>
+        <div id="collapseTwo" class="collapse {{ set_show(['pasien', 'pasien.tambah', 'pasien.edit']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">            
+            <a class="collapse-item {{ set_menu('pasien') }}" href="{{ route('pasien') }}">Daftar </a>
+            <a class="collapse-item {{ set_menu('pasien.tambah') }}" href="{{ route('pasien.tambah') }}">Tambah </a>
+          </div>
+        </div>
+      </li>
+      @endif
 
       <!-- Nav Item - Lab Collapse Menu -->
+      @if(Auth::user()->admin == 1)
       <li class="nav-item {{ set_menu(['lab', 'lab.tambah', 'lab.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-tint"></i>
@@ -90,7 +126,9 @@
           </div>
         </div>
       </li>
-              <!-- Nav Item - Lab Collapse Menu -->
+      @endif
+      <!-- Nav Item - Lab Collapse Menu -->
+      @if(Auth::user()->admin == 1)
       <li class="nav-item {{ set_menu(['obat', 'obat.tambah', 'obat.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-prescription-bottle-alt"></i>
@@ -105,8 +143,10 @@
           </div>
         </div>
       </li>
+      @endif
         
-        <!-- Nav Item - RM Collapse Menu -->
+      <!-- Nav Item - RM Collapse Menu -->
+      @if(Auth::user()->admin == 1)
       <li class="nav-item {{ set_menu(['rm', 'rm.tambah', 'rm.edit','rm.list','rm.lihat','rm.tambah.id','tagihan']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-file-signature"></i>
@@ -119,8 +159,10 @@
           </div>
         </div>
       </li>
+      @endif
         
 
+      @if(Auth::user()->admin == 1)
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -138,18 +180,21 @@
         <div id="collapsePages" class="collapse {{ set_show(['login', 'register', 'user','profile.edit','profile.edit.admin','profile.edit']) }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item {{ set_menu(['user']) }}" href="{{route('user')}}">Daftar Pengguna</a>
-            <a class="collapse-item {{ set_menu(['register']) }}" href="{{route('register')}}">Tambah Pengguna Baru</a>
+            <!-- <a class="collapse-item {{ set_menu(['register']) }}" href="{{route('register')}}">Tambah Pengguna Baru</a> -->
             <a class="collapse-item {{ set_menu(['profile.edit']) }}" href="{{route('profile.edit')}}">Edit Profile</a>
           </div>
         </div>
       </li>
+      @endif
 
       <!-- Nav Item - Charts -->
+      @if(Auth::user()->admin == 1)
       <li class="nav-item {{ set_menu(['pengaturan']) }}">
         <a class="nav-link" href="{{route('pengaturan')}}">
           <i class="fas fa-fw fa-sliders-h"></i>
           <span>Pengaturan</span></a>
       </li>
+      @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -215,14 +260,24 @@
               <a class="nav-link" href="#" id="messagesDropdown" style="padding: 5px;">
                 <span class="badge badge-success">Admin</span>
               </a>
-            @endif
-                
+            </li>
+            @else
             <!-- Nav Item - Profesi -->
             <li class="nav-item">
               <a class="nav-link" href="#" id="messagesDropdown" style="padding: 2px;">
-                <span class="badge badge-{{Auth::user()->profesi ? 'primary' :'warning'}}">{{Auth::user()->profesi}}</span>
+              @php
+                $dept = DB::table(DB::raw("(
+                  select a.departemen from pasien a 
+                  join users b 
+                  on a.id = b.id_pasien
+                  where nik_karyawan = '".Auth::user()->email."'
+                ) x "))->first();
+              @endphp
+                <span class="badge badge-{{$dept->departemen ? 'primary' :'warning'}}">{{$dept->departemen}}</span>
               </a>    
             </li>
+            @endif
+                
               
              <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">

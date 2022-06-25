@@ -44,11 +44,11 @@
                                     <i class="fas fa-save fa-fw"></i> Simpan
                                 </button>
                             </div>
-                            <div class="col-sm-4">
+                            <!-- <div class="col-sm-4">
                                 <button type="submit" class="btn btn-warning btn-block" name ="simpan" value="simpan_baru">
                                     <i class="fas fa-plus fa-fw"></i> Simpan Dan Buat Baru
                                 </button>
-                            </div>    
+                            </div>     -->
                             </div>                      
                     </form>
                 </div>

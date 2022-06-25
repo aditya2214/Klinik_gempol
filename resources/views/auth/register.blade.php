@@ -74,12 +74,13 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="profesi" class="col-md-4 col-form-label text-md-right">Profesi</label>
+                            <label for="profesi" class="col-md-4 col-form-label text-md-right">Role</label>
                             <div class="col-md-6">
                                 <select id="profesi" type="text" class="form-control @error('profesi') is-invalid @enderror" name="profesi" required>
-                                    <option value="" selected>Pilih Profesi</option>
-                                    <option value="Dokter" >Dokter</option>
-                                    <option value="Staff">Staff</option>
+                                    <option value="" selected disable>-- Pilih --</option>
+                                    <option value="Pasien/Karyawan" >Pasien/Karyawan</option>
+                                    <option value="Admin Karyawan">Admin Karyawan</option>
+                                    <option value="Petugas Klinik">Petugas Klinik</option>
                                     @error('profesi')
                                     <span class="invalid-feedback" role="alert"
                                     <strong>{{ $message }}</strong>

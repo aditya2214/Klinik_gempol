@@ -58,7 +58,7 @@
                             <label for="email" class="col-md-2 col-form-label text-md-right">Alamat Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required autocomplete="email">
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="profesi" class="col-md-2 col-form-label text-md-right">Profesi</label>
                             <div class="col-md-6">
                                 <select id="profesi" type="text" class="form-control @error('profesi') is-invalid @enderror" name="profesi" required>
@@ -129,7 +129,7 @@
                                     @enderror
                                 </select>
                             </div>
-                        </div>    
+                        </div>     -->
                         @if (Auth::user()->admin == 1)
                         <div class="form-group row">
                             <label   class="col-md-2 col-form-label text-md-right">Jadikan Admin</label>

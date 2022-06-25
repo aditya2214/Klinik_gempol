@@ -101,18 +101,20 @@
 </a>
                 <div class="collapse show" id="tambahrm">
                 <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-12" align="right">
-                    <a href="{{route('rm.edit', $data->id)}}" class="btn btn-warning btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">Edit</span>
-                        </a>
-                        <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$data->id}})" data-target="#DeleteModal" class="btn btn-icon-split btn-danger">
-                        <span class="icon"><i class="fa  fa-trash" style="padding-top: 4px;"></i></span><span class="text">Hapus Rekam Medis</span></a>
+                    @if(Auth::user()->admin == 1)
+                    <div class="row">
+                        <div class="col-sm-12" align="right">
+                        <a href="{{route('rm.edit', $data->id)}}" class="btn btn-warning btn-icon-split">
+                            <span class="icon">
+                            <i style="padding-top:4px"class="fas fa-pen"></i>
+                            </span>
+                            <span class="text">Edit</span>
+                            </a>
+                            <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$data->id}})" data-target="#DeleteModal" class="btn btn-icon-split btn-danger">
+                            <span class="icon"><i class="fa  fa-trash" style="padding-top: 4px;"></i></span><span class="text">Hapus Rekam Medis</span></a>
+                        </div>
                     </div>
-                </div>
+                    @endif
                     <form class="user" action="{{route('rm.update')}}" method="post">
                     {{csrf_field()}}
                     

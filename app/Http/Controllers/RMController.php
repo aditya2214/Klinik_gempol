@@ -302,7 +302,7 @@ class RMController extends Controller
            $ids= DB::table('rm')->latest('created_time')->first();         
             switch($request->simpan) {
                 case 'simpan_edit': 
-                    $buka=route('rm.edit',$ids->id);
+                    $buka=route('rm');
                     $pesan='Data Rekam Medis berhasil disimpan!';
                 break;             
                 case 'simpan_baru': 

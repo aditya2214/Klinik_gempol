@@ -92,6 +92,15 @@ Route::get('/rm/list/{idpasien}', 'RMController@list_rm')->name('rm.list')->midd
 Route::get('/rm/lihat/{id}', 'RMController@lihat_rm')->name('rm.lihat')->middleware('auth');
 //End rm
 
+// pendaftaran
+Route::get('/formulir', 'pendaftaranController@formulir')->name('formulir')->middleware('auth');
+
+Route::post('/formulir/simpan', 'pendaftaranController@store_formulir')->name('store_formulir')->middleware('auth');
+
+Route::get('/pendaftaran', 'pendaftaranController@pendaftaran')->name('pendaftaran')->middleware('auth');
+
+// endpendaftaran
+
 //Tagihan
 Route::get('/tagihan/{id}', 'RMController@tagihan')->name('tagihan')->middleware('auth');
 //Endtagihan
@@ -101,6 +110,8 @@ Route::get('/pengaturan', 'PengaturanController@index')->name('pengaturan')->mid
 
 Route::patch('/pengaturan/simpan', 'PengaturanController@simpan')->name('pengaturan.simpan')->middleware('auth','admin');
 //Endtagihan
+
+
 
 //Profile
 Auth::routes([

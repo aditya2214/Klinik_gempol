@@ -151,12 +151,14 @@
                       @endif
                       </td>
                       <td width="120px">
+                      @if(Auth::user()->admin == 1)
                         <a href="{{route('rm.edit', $rm->id)}}" class="btn btn-warning btn-sm btn-icon-split">
                           <span class="icon">
                           <i style="padding-top:4px"class="fas fa-pen"></i>
                           </span>
                           <span class="text">Edit</span>
                         </a>
+                      @endif
                         <a href="{{route('rm.lihat', $rm->id)}}" class="btn btn-success btn-sm btn-icon-split">
                           <span class="icon">
                           <i style="padding-top:4px"class="fas fa-eye"></i>
@@ -169,8 +171,10 @@
                           </span>
                           <span class="text">Tagihan</span>
                         </a> -->
+                        @if(Auth::user()->admin == 1)
                         <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$rm->id}})" data-target="#DeleteModal" class="btn btn-sm btn-icon-split btn-danger">
                         <span class="icon"><i class="fa  fa-trash" style="padding-top: 4px;"></i></span><span class="text">Hapus</span></a>
+                        @endif
                       </td>
                     </tr>
                   @endforeach

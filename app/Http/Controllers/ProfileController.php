@@ -37,7 +37,7 @@ class ProfileController extends Controller
   
         $this->validate($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($data->id),],
+            'email' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($data->id),],
             'password' => $data->password != null ? ['sometimes', 'confirmed','min:8', 'same:password'] : '',
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($data->id),],
             'profesi' => ['required', 'string', 'max:255'],

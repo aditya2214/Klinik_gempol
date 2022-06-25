@@ -47,7 +47,7 @@ class ObatController extends Controller
            $ids= DB::table('obat')->orderby('id','desc')->first();         
             switch($request->simpan) {
                 case 'simpan': 
-                    $buka=route('obat.edit',$ids->id);
+                    $buka=route('obat');
                     $pesan='Data obat berhasil disimpan!';
                 break;             
                 case 'simpan_baru': 

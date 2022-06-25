@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
 class PasienController extends Controller
@@ -21,7 +22,11 @@ class PasienController extends Controller
     public function tambah_pasien()
     {
         $metadatas = ambil_satudata('metadata',2);
-        return view('tambah-pasien',['metadatas'=>$metadatas]);
+        $role = DB::table(DB::raw("(
+                select * from role
+            ) x "))->get();
+
+        return view('tambah-pasien',['metadatas'=>$metadatas],['role' => $role]);
     }
     
     //Hallaman Edit Pasien
@@ -50,12 +55,12 @@ class PasienController extends Controller
             'Jenis_Kelamin' => 'required',
             'no_bpjs' => 'nullable|numeric|digits_between:1,15'
         ]);
-        DB::table('pasien')->insert([
+        $save1 = DB::table('pasien')->insert([
             'nik_karyawan' => $request->nik_karyawan,
             'nama' => $request->Nama_Lengkap,
             'tgl_lhr' => $request->Tanggal_Lahir,
             'alamat' => $request->Alamat,
-            'pekerjaan' => 'XXX',
+            'pekerjaan' => $request->role,
             'departemen' => $request->departemen,
             'hp' => $request->no_handphone,
             'email' => $request->email,
@@ -66,10 +71,25 @@ class PasienController extends Controller
             'created_time' => Carbon::now(),
             'updated_time' => Carbon::now(),
         ]);
+        
+        $cek_data_pasin = DB::table('pasien')->where('nik_karyawan',$request->nik_karyawan)->first();
+
+        DB::table('users')->insert([
+            'id_pasien' => $cek_data_pasin->id,
+            'username' =>  $request->nik_karyawan,
+            'name' => $request->Nama_Lengkap,
+            'email' => $request->nik_karyawan,
+            'password' => Hash::make(str_replace("-","",$request->Tanggal_Lahir)),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'admin' => $request->role,
+            'deleted' => 0,
+        ]);
+
            $ids= DB::table('pasien')->latest('created_time')->first();         
             switch($request->simpan) {
                 case 'simpan': 
-                    $buka=route('pasien.edit', $ids->id);
+                    $buka=route('pasien');
                     $pesan='Data pasien berhasil disimpan!';
                 break;
                 case 'simpan_rm': 
