@@ -101,6 +101,8 @@ Route::get('/pendaftaran', 'pendaftaranController@pendaftaran')->name('pendaftar
 
 // endpendaftaran
 
+Route::get('/report/laporan_kunjungan', 'reportController@index')->name('laporan_kunjungan')->middleware('auth');
+
 //Tagihan
 Route::get('/tagihan/{id}', 'RMController@tagihan')->name('tagihan')->middleware('auth');
 //Endtagihan
